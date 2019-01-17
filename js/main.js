@@ -1,24 +1,32 @@
 (()=> {
    //create a components first
-    const UserComponent = {
-        props: ['name', 'role'],
+    const HomePageComponent = {
+        template: "<h2>This is the homepage</h2>"
+    }
 
-        template: "#userstemplate",
+    const UsersPageComponent = {
+        template: "<h2>This is the users page</h2>"
+    }
 
-        created: function() {
-            console.log("let me diiiiiiiiiiiiiiie");
-        },
+    const ContactPageComponent = {
+        template: "<h2>This is the contact page</h2>"   
+    }
 
-        methods: {
-            logFromChild() {
-                console.log("logged from the component");
-            },
+    //routes are the path you're taking through the application
+    //www.google.ca is a route; it's the route to the home page
+    //www.simpsin/contact is the rout to the contact page and etc.
+    //each route gets mapped to a component that you define 
+    //and that components gets rendered in the <router-view> element
+    const routes = [
+        { path: '/', name: 'home', component: HomePageComponent},
+        { path: '/contact', name: 'contact', component: ContactPageComponent},
+        { path: '/users', name: 'users', component: UsersPageComponent}
 
-            passEvent() {
-                this.$emit('shoutup');
-            }
-        }
-    };
+    ]
+
+    const router = new VueRouter({
+        routes
+    });
 
    //then your vue instance
    const vm = new Vue({
@@ -39,7 +47,11 @@
        },
 
        components: {
-           'activeusers' : UserComponent,
-       }
-   })
+           'homepagecomponent' : HomePageComponent,
+           'userscomponent': UsersPageComponent,
+           'contactcomponent': ContactPageComponent
+       },
+
+       router: router
+   });
 })();
