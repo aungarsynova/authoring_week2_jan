@@ -12,6 +12,10 @@
         template: "<h2>This is the contact page</h2>"   
     }
 
+    const ErrorPageComponent = {
+        template: "<h2>Opps! Sorry, page does not exist</h2>"   
+    }
+
     //routes are the path you're taking through the application
     //www.google.ca is a route; it's the route to the home page
     //www.simpsin/contact is the rout to the contact page and etc.
@@ -20,7 +24,8 @@
     const routes = [
         { path: '/', name: 'home', component: HomePageComponent},
         { path: '/contact', name: 'contact', component: ContactPageComponent},
-        { path: '/users', name: 'users', component: UsersPageComponent}
+        { path: '/users', name: 'users', component: UsersPageComponent},
+        { path: '/*', name: 'error', component: ErrorPageComponent}
 
     ]
 
