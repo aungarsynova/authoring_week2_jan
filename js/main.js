@@ -5,7 +5,34 @@
     }
 
     const UsersPageComponent = {
-        template: "<h2>This is the users page</h2>"
+        props: ['id'], 
+        template: "#userList",
+
+        // encapsulate or isolate all components data
+        data: function() {
+            return {
+                users: []
+            }
+        },
+
+        created: function() {
+            console.log('user component created');
+            // take the query parameter from the route and pass it to the fetchUserData method
+            this.fetchUserData(this.id);
+        },
+
+        methods: {
+            fetchUserData(user) {
+                let url =`./includes/index.php?users=${this.id}`
+
+                fetch(url) 
+                    .then(res=>res.json())
+                    .then(data=>this.users=data)
+                    .catch(function(error) {
+                        console.error(error);
+                    });
+            }
+        }
     }
 
     const ContactPageComponent = {
@@ -24,7 +51,7 @@
     const routes = [
         { path: '/', name: 'home', component: HomePageComponent},
         { path: '/contact', name: 'contact', component: ContactPageComponent},
-        { path: '/users', name: 'users', component: UsersPageComponent},
+        { path: '/users/:id', name: 'users', component: UsersPageComponent, props: true},
         { path: '/*', name: 'error', component: ErrorPageComponent}
 
     ]

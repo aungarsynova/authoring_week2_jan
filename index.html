@@ -13,12 +13,28 @@
 <body>
     <main>
         <div id="app">
+            <!-- This is Vue's navigation element -->
             <router-link :to="{ path: '/'}" class="linker">Home</router-link>
-            <router-link :to="{ path: 'users'}" class="linker">Users</router-link>
+            <router-link :to="{ path: 'users/1'}" class="linker">Users</router-link>
             <router-link :to="{ path: 'contact'}" class="linker">Contact</router-link>
-            <router-view></router-view>
+            <!-- componnents get rendered here -->
+            <transition name="fade" mode="out-in">
+                <router-view></router-view>
+            </transition>
         </div>
     </main>
+
+    <!-- Templates -->
+    <template id="userList">
+        <div>
+            <h3>Current User:
+                <span v-if="users.length > 0"> 
+                    {{ users[0].first_name }} {{ users[0].last_name }}
+                </span>
+            </h3>
+        </div>
+    </template>
+
     <script src="js/main.js"></script>
 </body>
 </html>
