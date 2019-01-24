@@ -6,44 +6,35 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/main.css">
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-router/3.0.2/vue-router.min.js"></script>
+
     <title>Document</title>
 </head>
 <body>
     <main>
-        <h2>User Data for my App</h2>
-        <hr>
-        <article>
-            <h4 class="hidden"></h4>
-            <h5>sumpin sumpin</h5>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio ad, perspiciatis, quasi consectetur omnis nihil magnam culpa alias saepe quisquam itaque optio asperiores! Explicabo eius sint accusamus odio id voluptate!</p>
-
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio ad, perspiciatis, quasi consectetur omnis nihil magnam culpa alias saepe quisquam itaque optio asperiores! Explicabo eius sint accusamus odio id voluptate!
-            </p>
-        </article>
-
         <div id="app">
-            <activeusers name="Ace" role="i am dead inside" @shoutup="calledOnParent">
-                <h4>Active User Data:</h4>
-            </activeusers>
-
-            <activeusers name="Jack" role="soldier 76">
-                    <h4>Active User Data:</h4>
-                </activeusers>
-        </div>    
+            <!-- This is Vue's navigation element -->
+            <router-link :to="{ path: '/'}" class="linker">Home</router-link>
+            <router-link :to="{ path: 'users/1'}" class="linker">Users</router-link>
+            <router-link :to="{ path: 'contact'}" class="linker">Contact</router-link>
+            <!-- componnents get rendered here -->
+            <transition name="fade" mode="out-in">
+                <router-view></router-view>
+            </transition>
+        </div>
     </main>
-    <!--component template-->
-    <template id="userstemplate">
+
+    <!-- Templates -->
+    <template id="userList">
         <div>
-            <slot></slot>
-            <p>{{ name }}</p>
-            <p>{{ role }}</p>
-            <hr>
-            <button v-on:click="logFromChild">CLick here</button>
-            <button v-on:click="passEvent">Run a main viewmodel function</button>
+            <h3>Current User:
+                <span v-if="users.length > 0"> 
+                    {{ users[0].first_name }} {{ users[0].last_name }}
+                </span>
+            </h3>
         </div>
     </template>
+
     <script src="js/main.js"></script>
 </body>
 </html>
