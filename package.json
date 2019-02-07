@@ -1,0 +1,27 @@
+{
+  "name": "authoring_week2_jan",
+  "version": "1.0.0",
+  "description": "roku flashback with vue and components",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aungarsynova/authoring_week2_jan.git"
+  },
+  "keywords": [
+    "vue"
+  ],
+  "author": "Aisana Ungarsynova",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aungarsynova/authoring_week2_jan/issues"
+  },
+  "homepage": "https://github.com/aungarsynova/authoring_week2_jan#readme",
+  "devDependencies": {
+    "gulp": "^4.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-sass": "^4.0.2"
+  }
+}

@@ -1,40 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="css/main.css">
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-router/3.0.2/vue-router.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue.js Single-File JavaScript Component Demo</title>
 
-    <title>Document</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/master.css">
+
+  <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
+
+  <script src="https://unpkg.com/vue"></script>
+  <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
 </head>
 <body>
-    <main>
-        <div id="app">
-            <!-- This is Vue's navigation element -->
-            <router-link :to="{ path: '/'}" class="linker">Home</router-link>
-            <router-link :to="{ path: 'users/1'}" class="linker">Users</router-link>
-            <router-link :to="{ path: 'contact'}" class="linker">Contact</router-link>
-            <!-- componnents get rendered here -->
-            <transition name="fade" mode="out-in">
-                <router-view></router-view>
-            </transition>
-        </div>
-    </main>
+  <main id="app" class="container-fluid">
+    <div class="row">
+      <header class="col-sm-12">
+        <img src="images/roku.svg" alt="Roku logo" width="90"><span>FlashBack</span>
+        <nav class="float-right">
+          <ul>
+            <!-- <li>Kids</li> -->            
+            <li v-if="authenticated"><i class="fas fa-user-circle"></i></li>
+            <!-- <li v-if="administrator"><i class="fas fa-cog"></i></li> -->
+            <li v-if="authenticated" v-on:click="logout()"><i class="fas fa-power-off"></i></li>
+            
+          </ul>
+        </nav>
+      </header>
+    </div>  
+    
 
-    <!-- Templates -->
-    <template id="userList">
-        <div>
-            <h3>Current User:
-                <span v-if="users.length > 0"> 
-                    {{ users[0].first_name }} {{ users[0].last_name }}
-                </span>
-            </h3>
-        </div>
-    </template>
+    <div class="row">
+      <div class="col-sm-12">
+        <router-view @authenticated="setAuthenticated"/>
+      </div>
+    </div>
+  </main>
 
-    <script src="js/main.js"></script>
+  <footer>
+    <p class="copy">
+      &copy; 2018 The Awesome Company, Inc
+    </p>
+
+    <ul class="float-right">
+      <li><i class="fab fa-facebook"></i></li>
+      <li><i class="fab fa-twitter-square"></i></li>
+      <li><i class="fab fa-google-plus-square"></i></li>
+      <li><i class="fab fa-instagram"></i></li>
+    </ul>
+  </footer>
+  <script type="module" src="js/main.js"></script>
 </body>
 </html>
