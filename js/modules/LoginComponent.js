@@ -19,17 +19,24 @@ export default {
     methods: {
         login() {
             console.log('trying to log in');
-            console.log(this.$parent.mockAccount.username);
 
             if(this.input.username != "" && this.input.password != "") {
-                //do the login check
-                if (this.input.password == this.$parent.mockAccount.password) {
-                    console.log('logged in');
-                    this.$emit("authenticated", true);
-                    this.$router.replace({ name: "users"}); //redirect to users route
-                }else {
-                    console.log('login failed');
-                }
+                //fetch the data from the server and match passwords
+                let url = `./includes/index.php?username=${this.input.username}&&password=${this.input.password}`;
+
+                fetch(url)
+                .then(res=> res.json())
+                .then(data=>{
+                    if (data[0] == "false") {
+                        console.log("Login attempt failed");
+                    }else{
+                        this.$emit("authenticated", true);
+                        this.$router.replace({ name: "users" });
+                    }
+                })
+                .catch(function(error) {
+                    console.log(error);
+                });
             } else{ 
                 console.log('username and passord can not be blank');
             }
