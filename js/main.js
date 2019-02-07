@@ -22,10 +22,7 @@ const vm = new Vue({
 
         authenticated: false,
 
-        mockAccount: {
-            username: "Ace",
-            password: "123"
-        }
+       
     },
 
     methods: {
@@ -38,7 +35,9 @@ const vm = new Vue({
         },
         
         logout() {
+            this.$router.push({path:"/login"});
             this.authenticated = false; 
+
         }
     },
 
