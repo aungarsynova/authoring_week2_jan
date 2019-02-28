@@ -50,10 +50,12 @@ export default {
                     method: 'POST',
                     body: formData
                 })
-                .then(res=> res.json())
-                .then(data=>{
-                    if (data == "Login Failed") {
+                .then(res => res.json())
+                .then(data => {
+                    if (typeof data !== "object") {
                         console.log("Login attempt failed");
+                        //pop a toast notification or
+                        //let the user know something broke
                         return;
                     }else{
                         this.$emit("authenticated", true);
