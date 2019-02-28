@@ -3,11 +3,13 @@
 
 import LoginComponent from './/modules/LoginComponent.js'; 
 import UsersComponent from './/modules/UsersComponent.js'; 
+import UserHomeComponent from './/modules/UserHomeComponent.js'; 
 
 const routes = [
     { path: '/', redirect: {name:"login"} },
     { path: '/login', name: 'login', component: LoginComponent},
-    { path: '/users', name: 'users', component: UsersComponent}
+    { path: '/users', name: 'users', component: UsersComponent},
+    { path: '/usercomponent', name: 'home', component: UserHomeComponent}
 ]
 
 const router = new VueRouter({
