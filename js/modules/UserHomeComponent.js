@@ -98,9 +98,9 @@ export default {
             currentMediaDetails: {},
 
             mediaTypes: [
-                { iconClass: "fas fa-headphones", desription: "audio"},
-                { iconClass: "fas fa-film", desription: "video"},
-                { iconClass: "fas fa-tv", desription: "television"},
+                { iconClass: "fas fa-headphones", description: "audio"},
+                { iconClass: "fas fa-film", description: "video"},
+                { iconClass: "fas fa-tv", description: "television"},
             ],
 
             retrievedMedia: []
